@@ -345,7 +345,7 @@
                             {
                                 "name": "jbeap-16108-volume",
                                 "configMap": {
-                                    "secretName": "jbeap-16108.zip"
+                                    "name": "jbeap-16108.zip"
                                 }
                             }
                         ],

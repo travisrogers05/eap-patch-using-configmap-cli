@@ -1,4 +1,4 @@
-EAP S2I One-off Patch Example using the embedded-cli:
+EAP S2I One-off Patch Example using a configmap and the embedded-cli:
 ===============
 
 Note, this example illustrates a means to apply a one-off patch to EAP, for more complicated patching, the source image should be built with the patches already applied.
