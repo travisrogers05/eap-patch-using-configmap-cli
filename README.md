@@ -1,7 +1,8 @@
 EAP S2I One-off Patch Example using a configmap and the embedded-cli:
 ===============
 
-Note, this example illustrates a means to apply a one-off patch to EAP, for more complicated patching, the source image should be built with the patches already applied.
+Note, this example illustrates a means to apply a one-off patch to EAP using a configmap as the placeholder for the patch zip archive.  Note that this approach may be limited by the size of the patch zip archive file.  If creating the configmap succeeds, then the rest of this process should work.
+
 
 Basic instuctions: 
 
@@ -18,7 +19,7 @@ Basic instuctions:
   
   (Alternatively, this may be provided to oc new-app with -e CUSTOM_INSTALL_DIRECTORIES, but easy to forget :) )
 
-- The application template or existing deployment config may now be modified to mount the configmap containing the patch and the application rebuilt, see: https://github.com/luck3y/hello-world-war/blob/patching/eap71-basic-s2i-patching.json#L344 and https://github.com/luck3y/hello-world-war/blob/patching/eap71-basic-s2i-patching.json#L433 for the required mount configuration. 
+- The application template or existing deployment config may now be modified to mount the configmap containing the patch and the application rebuilt, see: https://github.com/travisrogers05/eap-patch-using-configmap-cli/blob/master/eap71-basic-s2i-patching.json#L344-#L351 and https://github.com/travisrogers05/eap-patch-using-configmap-cli/blob/master/eap71-basic-s2i-patching.json#L432-#L436 for the required mount configuration. 
 
 - The volume name should match the configmap created in the initial ConfigMap creation (jbeap-16108.zip, in this example.) 
 
@@ -27,7 +28,7 @@ Basic instuctions:
 
 - create / recreate the application:
      ``` $ oc new-app --template=eap71-basic-s2i-patching \
-       -p SOURCE_REPOSITORY_URL="https://github.com/luck3y/hello-world-war.git" \
+       -p SOURCE_REPOSITORY_URL="https://github.com/travisrogers05/eap-patch-using-configmap-cli" \
        -p SOURCE_REPOSITORY_REF="master" \
        -p CONTEXT_DIR="" \
        -p APPLICATION_NAME="eap-patching-demo" ```
